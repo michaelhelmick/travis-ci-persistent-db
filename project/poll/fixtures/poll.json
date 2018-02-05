@@ -1,0 +1,8 @@
+[{
+    "model": "poll.poll",
+    "pk": 1,
+    "fields": {
+        "id": 1,
+        "question": "Is this a test?"
+    }
+}]
