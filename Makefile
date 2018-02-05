@@ -1,6 +1,9 @@
-travis-before-install-backend: travis-noop
+travis-before-install-backend:
+	sudo rm -f /etc/boto.cfg
 
-travis-install-backend: travis-noop
+travis-install-backend:
+	pip install awscli
+	pip install -r ./requirements.txt
 
 travis-before-script-backend: travis-noop
 
