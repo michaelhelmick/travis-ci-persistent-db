@@ -20,7 +20,8 @@ travis-before-script-backend:
 
 travis-test-backend:
 	cd project
-	./manage.py test --keepdb --failfast -v 3 project
+	ls
+	python manage.py test --keepdb --failfast -v 3 project
 
 travis-noop:
 	@echo "Move along..."
