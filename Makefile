@@ -7,6 +7,7 @@ travis-install-backend:
 
 travis-before-script-backend:
 	mkdir -p ~/$(TRAVIS_BRANCH)/databases/
+	touch ~/$(TRAVIS_BRANCH)/databases/db.sql
 	aws s3 sync s3://org-travis-ci/$(TRAVIS_BRANCH) ~/$(TRAVIS_BRANCH)
 	mysql --user='root' --password='' -e 'CREATE DATABASE IF NOT EXISTS test_project;'
 	@case $$TRAVIS_COMMIT_MESSAGE in *"[reset mysql]"*) \
