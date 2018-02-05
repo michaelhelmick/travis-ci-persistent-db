@@ -20,5 +20,8 @@ jobs:
       - SCRIPT=test
       services:
       - mysql
+      after_success:
+      - mysqldump --user='root' --password='' test_project > ~/$TRAVIS_BRANCH/databases/db.sql
+      - aws s3 sync ~/$TRAVIS_BRANCH s3://org-travis-ci/$TRAVIS_BRANCH
 notifications:
   email: false
