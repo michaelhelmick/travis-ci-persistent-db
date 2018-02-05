@@ -1,0 +1,24 @@
+sudo: required
+language: python
+cache:
+  directories:
+  - pip
+before_install:
+- make travis-before-install-$TEST_SUITE
+install:
+- make travis-install-$TEST_SUITE
+before_script:
+- make travis-before-script-$TEST_SUITE
+script:
+- make travis-$SCRIPT-$TEST_SUITE
+jobs:
+  include:
+    - stage: test
+      python: 3.6
+      env:
+      - TEST_SUITE=backend
+      - SCRIPT=test
+      services:
+      - mysql
+notifications:
+  email: false
